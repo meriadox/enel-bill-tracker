@@ -1,0 +1,28 @@
+# Boletas reales de cualquier usuario: NUNCA deben subirse al repo
+*.pdf
+*.PDF
+
+# Salidas generadas por el script (datos personales de cada usuario)
+Resumen consumo electrico*.xlsx
+boletas_no_procesadas.txt
+LEEME.md
+
+# Respaldos automáticos del script
+*.respaldo_*.xlsx
+
+# Excel/Office temporales
+~$*.xlsx
+~$*.xls
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# SO / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
