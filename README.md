@@ -1,5 +1,8 @@
 # enel-bill-tracker
 
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+
 Convierte tus boletas eléctricas de **Enel (Chile)** en PDF a una planilla
 Excel limpia, con el desglose de cargos de cada boleta y una hoja de
 métricas (consumo y gasto anual/mensual/trimestral/semestral, promedio
@@ -94,6 +97,11 @@ python actualizar_cuentas.py --version   # muestra versión y datos de contacto
 Más detalle metodológico (cómo se prorratea el consumo cuando las boletas
 se solapan, cómo se definen los "años completos" para los promedios, etc.) en
 [`docs/SUPUESTOS_DE_CALCULO.md`](docs/SUPUESTOS_DE_CALCULO.md).
+
+¿Tu boleta no se lee bien? Abre un
+[issue con la plantilla "Boleta no reconocida"](../../issues/new?template=boleta-no-reconocida.yml)
+— sin adjuntar el PDF ni datos personales, solo el fragmento de texto plano
+relevante.
 
 ## Autoría y licencia
 

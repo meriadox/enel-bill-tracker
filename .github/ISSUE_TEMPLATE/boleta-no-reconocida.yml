@@ -1,0 +1,68 @@
+name: Boleta no reconocida / campo mal leído
+description: Reporta una boleta que el script no procesa bien (un campo falta, sale "s/i" cuando no debería, o un monto se lee mal).
+title: "[boleta] "
+labels: ["boleta-no-reconocida"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Antes de abrir el issue: NO adjuntes el PDF de la boleta ni ningún
+        archivo que contenga tu dirección, RUT, N° de cliente u otro dato
+        personal.** Lo único que se necesita es el texto plano, que no
+        incluye esos datos en el cuerpo de la boleta (pero revísalo igual
+        antes de pegarlo).
+
+  - type: input
+    id: version
+    attributes:
+      label: Versión del script
+      description: Salida de `python actualizar_cuentas.py --version`
+      placeholder: "actualizar_cuentas.py 0.1 (2026-10-29) — ..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: campo
+    attributes:
+      label: ¿Qué campo falla?
+      options:
+        - N° de boleta
+        - Período de lectura (inicio/fin)
+        - Consumo (kWh)
+        - Total a pagar
+        - Fecha de emisión / vencimiento
+        - Tipo de tarifa
+        - Un cargo detallado específico (indícalo abajo)
+        - La boleta completa queda en boletas_no_procesadas.txt
+    validations:
+      required: true
+
+  - type: input
+    id: cargo
+    attributes:
+      label: Si es un cargo detallado, ¿cuál? (nombre de columna en la planilla)
+      placeholder: "ej. Cargo Fondo Estabilización Ley 21.472 ($)"
+    validations:
+      required: false
+
+  - type: textarea
+    id: texto
+    attributes:
+      label: Texto plano de la boleta (solo la sección relevante, sin datos personales)
+      description: |
+        Genera el texto con:
+          pdftotext -layout -enc UTF-8 tu_boleta.pdf -
+        y pega SOLO las líneas relevantes (el renglón con la etiqueta y el
+        monto que no se lee bien). Revisa antes de pegar que no queden tu
+        nombre, dirección, RUT ni N° de cliente/medidor.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: ¿Qué debería haber extraído el script?
+      placeholder: "ej. debería haber leído $12.345 en la columna 'Transporte de Electricidad ($)'"
+    validations:
+      required: true
